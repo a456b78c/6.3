@@ -1,0 +1,54 @@
+#include <iostream> 
+#include <iomanip> 
+#include <time.h>
+
+using namespace std;
+
+void Print(int* mas, const int n);
+void Create(int* mas, const int n);
+
+template <typename T>
+T Suma(T* mas, T n)
+{
+    T S = 0;
+    for (T i = 0; i < n; i++)
+        if (mas[i] % 2 == 0)
+            S += mas[i];
+    return S;
+}
+
+int Sum1(int* mas, const int n)
+{
+    int S = 0;
+    for (int i = 0; i < n; i++)
+        if (mas[i] % 2 == 0)
+            S += mas[i];
+    return S;
+}
+
+int main()
+{
+    srand((unsigned)time(NULL));
+
+    const int a = 24;
+    int A[a];
+    Create(A, a);
+    Print(A, a);
+    cout << "Suma = " << Suma(A, a) << endl;
+    cout << "Sum1 = " << Sum1(A, a) << endl;
+
+    return 0;
+}
+void Create(int* mas, const int n)
+{
+    for (int i = 0; i < n; i++) {
+        mas[i] = rand() % 65 - 50;
+    }
+}
+void Print(int* mas, const int n) {
+    cout << "A{";
+    for (int i = 0; i < n; i++)
+        cout << " " << mas[i] << ",";
+    cout << "}";
+    cout << endl;
+}
